@@ -1,3 +1,4 @@
+import MenuItems from '@/components/MenuItems'
 import WelcomeScreen from '@/components/WelcomeScreen'
 import { View, StyleSheet } from 'react-native'
 
