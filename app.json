@@ -4,6 +4,7 @@
     "slug": "little-lemon-app",
     "version": "1.0.0",
     "orientation": "portrait",
+    "entryPoint": "node_modules/expo-router/entry",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
