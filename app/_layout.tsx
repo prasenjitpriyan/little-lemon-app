@@ -1,3 +1,4 @@
+import LittleLemonFooter from '@/components/LittleLemonFooter'
 import LittleLemonHeader from '@/components/LittleLemonHeader'
 import { Stack } from 'expo-router'
 import { View, Text, StyleSheet, StatusBar } from 'react-native'
@@ -20,9 +21,7 @@ export default function Layout() {
       </View>
 
       {/* Footer */}
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>© 2024 Little Lemon</Text>
-      </View>
+      <LittleLemonFooter />
     </View>
   )
 }
@@ -34,15 +33,5 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1
-  },
-  footer: {
-    height: 50,
-    backgroundColor: '#F4CE14',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  footerText: {
-    fontSize: 14,
-    color: '#495E57'
   }
 })
