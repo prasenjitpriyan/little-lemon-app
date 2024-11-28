@@ -1,3 +1,4 @@
+import FlatLists from '@/components/FlatList'
 import MenuItems from '@/components/MenuItems'
 import WelcomeScreen from '@/components/WelcomeScreen'
 import { View, StyleSheet } from 'react-native'
@@ -5,7 +6,7 @@ import { View, StyleSheet } from 'react-native'
 export default function Home() {
   return (
     <View style={styles.container}>
-      <WelcomeScreen />
+      <FlatLists />
     </View>
   )
 }
