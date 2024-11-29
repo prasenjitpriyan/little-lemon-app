@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { ScrollView, StyleSheet, Text, TextInput } from 'react-native'
+import { ScrollView, StyleSheet, Text, TextInput, Alert } from 'react-native'
 
 const FeedbackForm = () => {
-  // declare the variables
+  // Declare the variables
   const [firstName, onChangeFirstName] = useState('')
   const [lastName, onChangeLastName] = useState('')
   const [message, onChangeMessage] = useState('')
@@ -22,27 +22,30 @@ const FeedbackForm = () => {
         style={styles.input}
         value={firstName}
         onChangeText={onChangeFirstName}
-        placeholder={'First Name'}
+        placeholder="First Name"
+        onFocus={() => Alert.alert('First name is focused')}
+        onBlur={() => Alert.alert('First name is now blurred')}
+        clearButtonMode="always" // iOS-specific
       />
       <TextInput
         style={styles.input}
         value={lastName}
         onChangeText={onChangeLastName}
-        placeholder={'Last Name'}
+        placeholder="Last Name"
       />
       <TextInput
         style={styles.input}
         value={phoneNumber}
         onChangeText={onChangePhoneNumber}
-        placeholder={'Phone Number'}
-        keyboardType={'phone-pad'}
+        placeholder="Phone Number"
+        keyboardType="phone-pad"
       />
       <TextInput
         style={styles.messageInput}
         value={message}
         onChangeText={onChangeMessage}
-        placeholder={'Please leave feedback'}
-        multiline={true}
+        placeholder="Please leave feedback"
+        multiline
         maxLength={250}
       />
     </ScrollView>
@@ -59,7 +62,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
-    borderColor: 'EDEFEE',
+    borderColor: '#EDEFEE',
     backgroundColor: '#F4CE14'
   },
   messageInput: {

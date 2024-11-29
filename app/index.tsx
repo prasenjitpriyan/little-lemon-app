@@ -1,8 +1,5 @@
-import FlatLists from '@/components/FlatList'
-import MenuItems from '@/components/MenuItems'
-import SectionLists from '@/components/SectionList'
+import LoginScreen from '@/components/LoginScreen'
 import FeedbackForm from '@/components/TextInput'
-import WelcomeScreen from '@/components/WelcomeScreen'
 import { View, StyleSheet } from 'react-native'
 
 export default function Home() {
