@@ -1,14 +1,26 @@
-import * as React from 'react'
-import { ScrollView, Text, StyleSheet } from 'react-native'
+import React from 'react'
+import { ScrollView, View, Text, StyleSheet, Image } from 'react-native'
 
-export default function WelcomeScreen() {
+const WelcomeScreen: React.FC = () => {
   return (
-    <ScrollView indicatorStyle="white" style={styles.container}>
-      <Text style={styles.title}>Welcome to Little Lemon</Text>
-      <Text style={styles.subheading}>
+    <ScrollView style={styles.container}>
+      {/* Header Section */}
+      <View style={styles.headerWrapper}>
+        <Image
+          style={styles.image}
+          source={require('../assets/images/logo.png')}
+          resizeMode="cover"
+          accessible={true}
+          accessibilityLabel="Little Lemon Logo"
+        />
+        <Text style={styles.headerText}>Little Lemon</Text>
+      </View>
+
+      {/* Description Section */}
+      <Text style={styles.regularText}>
         Little Lemon is a charming neighborhood bistro that serves simple food
         and classic cocktails in a lively but casual environment. We would love
-        to hear more about your experience with us!
+        to hear your experience with us!
       </Text>
     </ScrollView>
   )
@@ -17,19 +29,36 @@ export default function WelcomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#495E57'
+    backgroundColor: 'black',
+    width: '100%'
   },
-  title: {
-    padding: 40,
-    fontSize: 50,
+  headerWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center', // Center items vertically
+    margin: 10
+  },
+  headerText: {
+    paddingRight: 10,
+    paddingLeft: 20,
+    paddingTop: 30,
+    paddingBottom: 10,
+    fontSize: 30,
     color: '#EDEFEE',
     textAlign: 'center'
   },
-  subheading: {
-    fontSize: 38,
+  regularText: {
+    fontSize: 24,
     padding: 20,
     marginVertical: 8,
     color: '#EDEFEE',
     textAlign: 'center'
+  },
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 20
   }
 })
+
+export default WelcomeScreen

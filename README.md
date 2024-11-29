@@ -1878,7 +1878,6 @@ You can also assign different accessibility labels to each image in the **Scroll
 
 ```javascript
 import { ScrollView, Image } from 'react-native'
-
 ;<ScrollView>
   <Image
     source={require('./IMG/little-lemon-logo.png')}
@@ -1960,4 +1959,106 @@ In this example:
 
 ---
 
-By practicing these concepts, you'll be able to create more **accessible**, **dynamic**, and **visually appealing** applications. ✨
+# 🌟 **Rendering a Background Image in React Native**
+
+## 📝 **INTRODUCTION**
+
+This material focuses on how to render a **background image** in a React Native app, allowing you to overlay text and other components on top of it. By using the **ImageBackground** component, you can create visually appealing screens with layered content.
+
+---
+
+## 🖼️ **Rendering a Background Image**
+
+React Native provides the **`ImageBackground`** component, which is specifically designed to display images as backgrounds. This component allows you to layer other content such as text, buttons, or icons over the background image.
+
+### Steps to Render a Background Image:
+
+1. Import the **`ImageBackground`** component from React Native.
+2. Use the **`require`** function to reference the image you'd like to use as the background.
+3. Nest any child components (like text) inside the **`ImageBackground`** component.
+
+### Example:
+
+```javascript
+import React from 'react'
+import { ImageBackground, Text, StyleSheet, View } from 'react-native'
+
+const App = () => {
+  return (
+    <ImageBackground
+      source={require('./IMG/background-image.jpg')}
+      style={styles.background}
+    >
+      <View style={styles.overlay}>
+        <Text style={styles.welcomeText}>Welcome to Little Lemon!</Text>
+      </View>
+    </ImageBackground>
+  )
+}
+```
+
+In this example:
+
+- The **`ImageBackground`** component is used to set the background.
+- **`source={require('./IMG/background-image.jpg')}`** loads the background image.
+- A **`Text`** component is overlayed on top of the image.
+
+---
+
+## 🎨 **Styling the Background Image**
+
+Styling the **`ImageBackground`** component allows you to control how it occupies the screen space and fits the available area.
+
+- **Flex property**: Use **`flex: 1`** to make the background image occupy the entire screen.
+- **`resizeMode`**: Controls how the image fits within the component’s bounds. Use options like **`contain`** to ensure the image scales to fit without cropping.
+
+### Example of Styling:
+
+```javascript
+const styles = StyleSheet.create({
+  background: {
+    flex: 1, // Fills the entire screen
+    resizeMode: 'contain' // Scales the image without cropping
+  },
+  overlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    opacity: 0.8 // Optional overlay for better text visibility
+  },
+  welcomeText: {
+    fontSize: 24,
+    color: 'white',
+    fontWeight: 'bold'
+  }
+})
+```
+
+### Key Styling Notes:
+
+- **`flex: 1`**: Makes the **`ImageBackground`** fill the screen.
+- **`resizeMode: 'contain'`**: Ensures the background image scales to fit without being cropped.
+- **Overlay Styling**: You can add an overlay (like semi-transparent backgrounds) to improve the contrast of the text and ensure readability.
+
+---
+
+## 🖥️ **Displaying the Result**
+
+Once implemented, the background image will be rendered correctly in the app, with any text or components layered on top, as styled in the code. This approach ensures that your background image fits well on both iOS and Android emulators.
+
+---
+
+## 🚀 **Key Takeaways**
+
+- The **`ImageBackground`** component is essential for adding background images to your app and allows other components to be overlaid.
+- **Styling** plays a crucial role in determining how the background image fills the screen and how the overlay content appears.
+- Experiment with different **`resizeMode`** options and overlay styles to create a visually appealing and user-friendly experience.
+
+---
+
+### 💡 **Practice Tip:**
+
+- Experiment with different background images and styling properties to get the desired effect.
+- Try using **`opacity`** or other overlay styles to enhance the readability of text placed over background images.
+
+---
