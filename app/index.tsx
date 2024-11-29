@@ -1,11 +1,11 @@
 import LoginScreen from '@/components/LoginScreen'
-import FeedbackForm from '@/components/TextInput'
+import MenuItems from '@/components/MenuItemsToDisplay'
 import { View, StyleSheet } from 'react-native'
 
 export default function Home() {
   return (
     <View style={styles.container}>
-      <FeedbackForm />
+      <LoginScreen />
     </View>
   )
 }
