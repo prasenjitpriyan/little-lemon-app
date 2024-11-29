@@ -1735,3 +1735,229 @@ This will display a **loader.gif** while the image is loading from the internet.
 Experiment with different resize modes and image sources to better understand how images behave in different situations. With time and practice, you'll be able to effectively use images to enhance your app’s UI.
 
 ---
+
+# 🖼️ **Styling Images in React Native: Little Lemon Logo**
+
+## 📝 **INTRODUCTION**
+
+This material focuses on styling images in a React Native application, specifically how to accurately display the **Little Lemon logo** using various styling techniques. Proper image styling ensures that your app has a polished and visually appealing design, especially when displaying key elements like logos.
+
+---
+
+## 🎨 **Styling the Image Component**
+
+In this example, we use the **Image** component to display the **Little Lemon logo**. The image is styled using a **StyleSheet** that defines the logo’s dimensions, such as height and width.
+
+### Example:
+
+```javascript
+import React from 'react'
+import { Image, StyleSheet, View } from 'react-native'
+
+const App = () => {
+  return (
+    <View style={styles.container}>
+      <Image
+        source={require('./IMG/little-lemon-logo.png')}
+        style={styles.logo}
+      />
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff'
+  },
+  logo: {
+    width: 300,
+    height: 100
+  }
+})
+
+export default App
+```
+
+Here, the **Image** component holds the Little Lemon logo, which is styled using a **height** of **100 pixels** and a **width** of **300 pixels**. The **style** prop is used to apply the dimensions to the logo.
+
+---
+
+## 🔧 **Using Resize Mode for Better Display**
+
+Sometimes, images may get cut off or distorted when the frame doesn't match their dimensions. To address this, the **resizeMode** prop is introduced. This prop controls how the image is resized within its container.
+
+The available options for **resizeMode** are:
+
+- **`cover`**: Scales the image to cover the entire container, potentially cropping the image.
+- **`contain`**: Scales the image to fit inside the container while maintaining the aspect ratio, ensuring it does not get cut off or distorted.
+- **`stretch`**: Stretches the image to fill the entire container.
+- **`repeat`**: Repeats the image to fill the space.
+- **`center`**: Centers the image without resizing.
+
+For our logo, we choose the **`contain`** option to ensure the logo fits within the specified dimensions without being distorted or cut off.
+
+### Example:
+
+```javascript
+<Image
+  source={require('./IMG/little-lemon-logo.png')}
+  style={styles.logo}
+  resizeMode="contain"
+/>
+```
+
+---
+
+## 🌍 **Cross-Platform Compatibility**
+
+After applying the styles and **resizeMode**, the logo displays perfectly on both **iOS** and **Android** emulators, confirming that the code works seamlessly across platforms.
+
+This ensures that users on both platforms will have a consistent and visually appealing experience when viewing the app's welcome page.
+
+---
+
+## 💡 **Key Takeaways**
+
+- The **Image** component allows you to display images with customized dimensions.
+- Use **resizeMode** to handle image resizing and avoid distortion or clipping.
+- **Cross-platform compatibility** is crucial for ensuring your app looks good on both iOS and Android devices.
+
+---
+
+### **Practice Tip:**
+
+Experiment with different **resizeMode** options and **style** properties to get a feel for how they impact the display of images in your app. Practice makes perfect, and the more you work with image styling, the more intuitive it becomes.
+
+---
+
+# 🌟 **Enhancing Image Accessibility and Styling in React Native**
+
+## 📝 **INTRODUCTION**
+
+This material focuses on enhancing the use of the **Image** component in React Native, particularly by adding **accessibility features** and **styling options** to improve the user experience. By making your images accessible and visually appealing, you can ensure your app is usable for all users, including those with disabilities.
+
+---
+
+## 🔑 **Understanding Accessibility in Images**
+
+React Native provides the **accessible** prop for the **Image** component, which is a Boolean value that indicates whether an image should be an accessibility element. When this prop is set to **true**, it allows assistive technologies, like screen readers, to interact with the image.
+
+### Why Accessibility Matters:
+
+- **Screen Readers**: Descriptive labels will be read aloud, enabling visually impaired users to identify images.
+- **Inclusive Design**: Accessibility features ensure your app is usable by a wider range of people, including those with disabilities.
+
+### Example:
+
+```javascript
+<Image
+  source={require('./IMG/little-lemon-logo.png')}
+  style={styles.logo}
+  accessible={true}
+  accessibilityLabel="Little Lemon logo"
+/>
+```
+
+In the example above:
+
+- The **`accessible={true}`** prop makes the image accessible.
+- The **`accessibilityLabel="Little Lemon logo"`** provides a descriptive label that will be read aloud by screen readers.
+
+---
+
+## 🖼️ **Implementing Scrollable Images**
+
+For apps that have multiple images or tall images, the **ScrollView** component is an excellent choice for creating a scrollable area. This allows the user to scroll through images or view longer images without them being cut off.
+
+You can also assign different accessibility labels to each image in the **ScrollView** to enhance clarity and usability for screen reader users.
+
+### Example:
+
+```javascript
+import { ScrollView, Image } from 'react-native'
+
+;<ScrollView>
+  <Image
+    source={require('./IMG/little-lemon-logo.png')}
+    style={styles.image}
+    accessible={true}
+    accessibilityLabel="Little Lemon logo"
+  />
+  <Image
+    source={require('./IMG/menu-item.png')}
+    style={styles.image}
+    accessible={true}
+    accessibilityLabel="Delicious menu item"
+  />
+</ScrollView>
+```
+
+Here, we have two images within a **ScrollView**, each with its own **accessibilityLabel**. The user can scroll through the images, and the screen reader will announce each image's description accordingly.
+
+---
+
+## 🎨 **Styling Options for Images**
+
+Styling images in React Native is essential to fit your design needs. You can customize various aspects of the **Image** component, including:
+
+- **Border**: Define the width, color, and radius of the image’s border to create rounded or bordered images.
+- **Dimensions**: Set specific width and height to control the image's size.
+- **resizeMode**: This prop controls how the image should fill its container. Options include:
+  - **`cover`**: The image scales to fill the container, possibly cropping it.
+  - **`contain`**: The image scales to fit within the container without cropping.
+  - **`stretch`**: The image stretches to fill the container.
+  - **`repeat`**: The image is repeated if it doesn't fill the space.
+  - **`center`**: The image is centered without resizing.
+
+### Example of Styling:
+
+```javascript
+<Image
+  source={require('./IMG/little-lemon-logo.png')}
+  style={[styles.logo, styles.imageBorder]}
+  resizeMode="contain"
+/>
+```
+
+### Styling Code:
+
+```javascript
+const styles = StyleSheet.create({
+  logo: {
+    width: 300,
+    height: 100
+  },
+  imageBorder: {
+    borderWidth: 2,
+    borderColor: '#f06529',
+    borderRadius: 10
+  }
+})
+```
+
+In this example:
+
+- The **`resizeMode="contain"`** ensures that the logo fits within the designated space without distortion.
+- The **`imageBorder`** style adds a border and radius to the image for a more polished look.
+
+---
+
+## 🛠️ **Key Takeaways**
+
+- Use the **accessible** prop and **accessibilityLabel** to make your images more accessible to users with disabilities.
+- Implement **ScrollView** to create a scrollable area for images, especially useful for displaying multiple or tall images.
+- Customize image styling using properties like **resizeMode**, **borderWidth**, and **borderRadius** to match your app's design.
+
+---
+
+### 💡 **Practice Tip:**
+
+- Experiment with different **resizeMode** options to see how they affect the display of your images in various screen sizes.
+- Try adding **accessibility** features to all images in your app to improve inclusivity.
+
+---
+
+By practicing these concepts, you'll be able to create more **accessible**, **dynamic**, and **visually appealing** applications. ✨

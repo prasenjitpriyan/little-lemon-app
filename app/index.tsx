@@ -1,11 +1,12 @@
-import LoginScreen from '@/components/LoginScreen'
-import MenuItems from '@/components/MenuItemsToDisplay'
+import React from 'react'
 import { View, StyleSheet } from 'react-native'
+import Welcome from '@/components/ImageComponent'
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
     <View style={styles.container}>
-      <LoginScreen />
+      {/* Render Welcome Component */}
+      <Welcome />
     </View>
   )
 }
@@ -13,6 +14,10 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#495E57'
+    backgroundColor: '#495E57',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
+
+export default Home
