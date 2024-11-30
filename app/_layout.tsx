@@ -1,7 +1,7 @@
 import LittleLemonFooter from '@/components/LittleLemonFooter'
 import LittleLemonHeader from '@/components/LittleLemonHeader'
-import { Stack } from 'expo-router'
-import { View, Text, StyleSheet, StatusBar, useColorScheme } from 'react-native'
+import { Slot } from 'expo-router'
+import { View, StyleSheet, StatusBar, useColorScheme } from 'react-native'
 
 export default function Layout() {
   const colorScheme = useColorScheme()
@@ -22,11 +22,7 @@ export default function Layout() {
       <LittleLemonHeader />
 
       <View style={styles.content}>
-        <Stack
-          screenOptions={{
-            headerShown: false // Disable default header
-          }}
-        />
+        <Slot />
       </View>
 
       {/* Footer */}

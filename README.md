@@ -2282,3 +2282,357 @@ The **`useWindowDimensions`** hook is invaluable for crafting layouts that adjus
 - Test your app on multiple devices and orientations to fine-tune your layouts.
 
 ---
+
+# 📘 **INTRODUCTION**
+
+This material focuses on the **community hooks** available in **React Native**, how to access them, and their practical applications in enhancing your mobile applications.
+
+---
+
+## 🚀 **Accessing Community Hooks**
+
+React Native, being open source, allows developers to create and share hooks that extend its capabilities. You can find these hooks on GitHub at the [React Native Community Hooks](https://github.com/react-native-community/hooks) page.
+
+### 🛠️ **Installation**
+
+To install the community hooks package, run either of the following commands:
+
+```bash
+# Using NPM
+npm install @react-native-community/hooks
+
+# Using Yarn
+yarn add @react-native-community/hooks
+```
+
+---
+
+## 📂 **Commonly Used Community Hooks**
+
+### 🔄 `useAppState`
+
+This hook indicates whether the app is in **active**, **background**, or **inactive** mode, enabling you to customize app behavior based on its state.
+
+### 🖼️ `useImageDimensions`
+
+This hook returns the dimensions of an image and its loading status, helping you design your app more effectively by utilizing image data.
+
+---
+
+## 🌟 **Enhancing User Experience**
+
+### ⌨️ `useKeyboard`
+
+This hook informs you if the **virtual keyboard** is displayed and its height, allowing for better app design around keyboard interactions.
+
+### 📱 `useDeviceOrientation`
+
+This hook detects whether the device is in **landscape** or **portrait** mode, which is particularly useful for tablet users and responsive design considerations.
+
+---
+
+### 💡 **Pro Tip**
+
+Exploring these hooks can significantly enhance your app's functionality and user experience. Keep practicing and experimenting with these tools to continue growing as a developer!
+
+---
+
+# 📘 **Exploring Other Community Hooks**
+
+In an earlier video, you learned about some of the hooks available in the **React Native Community**. In this guide, you'll explore the code used in these community hooks to understand them better.
+
+---
+
+## 🛠️ **Install**
+
+To get started, ensure you have installed the community hooks package using the following command:
+
+```bash
+npm install @react-native-community/hooks
+```
+
+Once installed, you can access all the hooks provided by the community package.
+
+---
+
+## 🔄 **useDeviceOrientation Hook**
+
+The `useDeviceOrientation` hook determines if the user’s mobile device is in **landscape** or **portrait** mode. This is particularly useful for apps that need to support both orientations.
+
+### 💻 **Usage**
+
+```javascript
+import { useDeviceOrientation } from '@react-native-community/hooks'
+
+const orientation = useDeviceOrientation()
+
+console.log('Is orientation portrait: ', orientation.portrait)
+console.log('Is orientation landscape: ', orientation.landscape)
+```
+
+### 🔍 **What It Returns**
+
+The `useDeviceOrientation` hook provides an object with the following properties:
+
+- **`portrait`**: `true` if the device is in portrait mode.
+- **`landscape`**: `true` if the device is in landscape mode.
+
+---
+
+## 📱 **useAppState Hook**
+
+The `useAppState` hook is a powerful tool for determining the current **state** of the app.
+
+### 📋 **App States**
+
+- **`active`**: The app is currently in use.
+- **`background`**: The app is running in the background.
+- **`inactive`** _(iOS only)_: The app is in an inactive state.
+
+### 💡 **Use Case**
+
+This hook is valuable for taking specific actions when the app's state changes. For example:
+
+- A **banking app** might log out a user after a period of inactivity or when the app goes to the background.
+
+---
+
+## ✂️ **useClipboard Hook**
+
+The `useClipboard` hook allows you to manage the **clipboard data** within your application.
+
+### 💻 **Usage**
+
+```javascript
+import { useClipboard } from '@react-native-community/hooks';
+
+// Inside the component
+
+const [data, setString] = useClipboard();
+
+<Text>{data}</Text>
+
+<Button
+  title="Update Clipboard"
+  onPress={() => setString('new clipboard data')}
+>Set Clipboard</Button>
+```
+
+---
+
+## 🌟 **What You Learned**
+
+In this guide, you explored:
+
+- **`useDeviceOrientation`** to detect device orientation.
+- **`useAppState`** to track app activity states.
+- **`useClipboard`** to manage clipboard data.
+
+### 📎 **Additional Resources**
+
+For more hooks and details, visit the [React Native Community Hooks page](https://github.com/react-native-community/hooks).
+
+---
+
+# 📘 **INTRODUCTION**
+
+This guide focuses on understanding **React Navigation**, a crucial library for enabling smooth navigation between screens in React Native applications.
+
+---
+
+## 🚀 **Understanding React Navigation**
+
+**React Navigation** is the most popular library for managing navigation in React Native apps. It provides an easy-to-use and customizable solution for both iOS and Android platforms.
+
+### 🛠️ **Key Features**
+
+- Includes a **Native Stack Navigator** for handling screen transitions and navigation history.
+- Allows users to navigate seamlessly between screens.
+
+---
+
+## 🌟 **Benefits and Features**
+
+- Offers built-in navigators like **stack**, **tab**, and **drawer**, which can be customized without writing native code.
+- Enhances user experience with gestures and animations that align with mobile app standards.
+
+---
+
+## ⚖️ **Trade-offs and Considerations**
+
+1. Some navigators don’t utilize **native navigation APIs**, which might affect the app’s native feel.
+   - Use the **Native Stack Navigator** for a more authentic experience.
+2. Upgrading to new versions of React Navigation might introduce **breaking changes**, so ensure compatibility with older APIs.
+
+---
+
+## 🔧 **Requirements**
+
+Before starting, ensure you meet these prerequisites:
+
+- **React Native version**: `>=0.63`
+- **Expo version**: `>=41` (if using Expo)
+- **TypeScript version**: `>=4.1.0` (if using TypeScript)
+
+---
+
+## 📦 **Installation in an Expo-Managed Project**
+
+### 1️⃣ **Install Dependencies**
+
+Run the following commands to add React Navigation to your project:
+
+```bash
+npm install @react-navigation/native
+
+npx expo install react-native-screens react-native-safe-area-context
+```
+
+These commands install the compatible versions of the required libraries for your Expo project.
+
+---
+
+### 2️⃣ **Set Up NavigationContainer**
+
+After installing the packages, wrap your entire app in the **NavigationContainer** component:
+
+```javascript
+import * as React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+
+export default function App() {
+  return (
+    <NavigationContainer>{/* Rest of your app code */}</NavigationContainer>
+  )
+}
+```
+
+### 🌐 **What It Does**
+
+Wrapping your app in the `NavigationContainer` ensures navigation is available throughout the entire app.
+
+---
+
+## 💡 **What You Learned**
+
+- How to install and set up React Navigation in a React Native app.
+- How to configure the **NavigationContainer** to enable app-wide navigation.
+
+---
+
+### 📎 **Next Steps**
+
+You will explore specific navigators like **stack**, **tab**, and **drawer** in the next sections. Stay tuned!
+
+---
+
+# 📘 **INTRODUCTION**
+
+This guide focuses on setting up the **Stack Navigator** in a React Native app, specifically for the **Little Lemon** app, enabling users to transition between screens effectively.
+
+---
+
+## 🚀 **Setting Up the Stack Navigator**
+
+### 🛠️ **Step 1: Install Required Libraries**
+
+Begin by installing the necessary libraries:
+
+```bash
+npm install @react-navigation/native-stack
+```
+
+> This library depends on **`react-native-screens`**, which should already be installed when setting up React Navigation.
+
+### 📥 **Step 2: Import Components**
+
+Import the required components:
+
+- **`NavigationContainer`** from `@react-navigation/native`
+- **`createNativeStackNavigator`** from `@react-navigation/native-stack`
+- The screens you’ll navigate between (`WelcomeScreen` and `MenuScreen`).
+
+---
+
+## 📋 **Defining Screens in the Stack**
+
+### ⚙️ **Step 3: Instantiate the Stack**
+
+Use the `createNativeStackNavigator` function to create your stack instance:
+
+```javascript
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
+const Stack = createNativeStackNavigator()
+```
+
+### 🏗️ **Step 4: Configure the Navigator**
+
+Wrap the entire app in the `NavigationContainer` and define your screens within the `Stack.Navigator`:
+
+```javascript
+import * as React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import MenuScreen from './Screens/MenuScreen'
+import WelcomeScreen from './Screens/WelcomeScreen'
+
+const Stack = createNativeStackNavigator()
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Welcome">
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="Menu" component={MenuScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
+```
+
+### 🖼️ **Screen Configuration**
+
+- **`initialRouteName`**: Sets the default screen when the app starts (here, the Welcome screen).
+- **`Stack.Screen` props**:
+  - **`name`**: Defines the route name.
+  - **`component`**: Specifies the screen component to render.
+
+---
+
+## 🌟 **Understanding the Initial Setup**
+
+The current setup includes two screens:
+
+1. **Welcome Screen**: Displays the **Little Lemon logo**.
+2. **Menu Screen**: Displays **menu items**.
+
+Although navigation functionality is not yet implemented, this setup provides the foundation for your app's navigation.
+
+---
+
+## 💡 **Key Concepts Recap**
+
+1. **Stack Navigator**: Enables screen transitions in your app.
+2. **`NavigationContainer`**: Wraps the app to provide navigation capabilities.
+3. **Routes**: Defined using the `Stack.Screen` component with `name` and `component` props.
+
+---
+
+### 🏆 **What You Learned**
+
+- Installing and configuring the **Native Stack Navigator**.
+- Wrapping the app with **`NavigationContainer`**.
+- Defining and managing screens within the **Stack Navigator**.
+
+---
+
+### 📎 **Next Steps**
+
+Continue exploring stack navigation features, including:
+
+- **Customizing screen headers**.
+- **Passing parameters between screens**.
+- **Adding navigation gestures and animations**.
+
+---

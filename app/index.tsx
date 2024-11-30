@@ -1,11 +1,11 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import WelcomeScreen from '@/components/WelcomeScreen'
+import LoginScreen from '@/components/LoginScreen'
 
 const Home: React.FC = () => {
   return (
     <View style={styles.container}>
-      <WelcomeScreen />
+      <LoginScreen />
     </View>
   )
 }
