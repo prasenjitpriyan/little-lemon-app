@@ -2636,3 +2636,968 @@ Continue exploring stack navigation features, including:
 - **Adding navigation gestures and animations**.
 
 ---
+
+# Some examples Components
+
+```bash
+BackgroundImageApp.tsx
+```
+
+---
+
+```javascript
+import React from 'react'
+import { StyleSheet, Text, View, ImageBackground } from 'react-native'
+
+const BackgroundImageApp: React.FC = () => {
+  return (
+    <ImageBackground
+      source={require('../assets/images/logo.png')} // Replace with your image path
+      style={styles.background}
+      resizeMode="cover"
+    >
+      <View style={styles.overlay}>
+        <Text style={styles.title}>Welcome to Little Lemon</Text>
+        <Text style={styles.subtitle}>Your local Mediterranean Bistro</Text>
+      </View>
+    </ImageBackground>
+  )
+}
+
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    padding: 20,
+    borderRadius: 10
+  },
+  title: {
+    fontSize: 28,
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+  subtitle: {
+    fontSize: 18,
+    color: '#fff',
+    textAlign: 'center',
+    marginTop: 10
+  }
+})
+
+export default BackgroundImageApp
+```
+
+---
+
+```bash
+FlatList.tsx
+```
+
+```javascript
+import React from 'react'
+import { View, Text, StyleSheet, FlatList, ListRenderItem } from 'react-native'
+
+interface FlatLists {
+  name: string
+  id: string
+}
+
+// Menu items array
+const menuItemsToDisplay: FlatLists[] = [
+  { name: 'Hummus', id: '1A' },
+  { name: 'Moutabal', id: '2B' },
+  { name: 'Falafel', id: '3C' },
+  { name: 'Marinated Olives', id: '4D' },
+  { name: 'Kofta', id: '5E' },
+  { name: 'Eggplant Salad', id: '6F' },
+  { name: 'Lentil Burger', id: '7G' },
+  { name: 'Smoked Salmon', id: '8H' },
+  { name: 'Kofta Burger', id: '9I' },
+  { name: 'Turkish Kebab', id: '10J' },
+  { name: 'Fries', id: '11K' },
+  { name: 'Buttered Rice', id: '12L' },
+  { name: 'Bread Sticks', id: '13M' },
+  { name: 'Pita Pocket', id: '14N' },
+  { name: 'Lentil Soup', id: '15O' },
+  { name: 'Greek Salad', id: '16Q' },
+  { name: 'Rice Pilaf', id: '17R' },
+  { name: 'Baklava', id: '18S' },
+  { name: 'Tartufo', id: '19T' },
+  { name: 'Tartufo', id: '20U' },
+  { name: 'Tiramisu', id: '21V' },
+  { name: 'Panna Cotta', id: '22W' }
+]
+
+// Define the props type for the Item component
+interface ItemProps {
+  name: string
+}
+
+// Item component
+const Item: React.FC<ItemProps> = ({ name }) => (
+  <View style={menuStyles.innerContainer}>
+    <Text style={menuStyles.itemText}>{name}</Text>
+  </View>
+)
+
+// Main FlatLists component
+const FlatLists: React.FC = () => {
+  // Type the renderItem function
+  const renderItem: ListRenderItem<FlatLists> = ({ item }) => (
+    <Item name={item.name} />
+  )
+
+  return (
+    <View style={menuStyles.container}>
+      <Text style={menuStyles.headerText}>View Menu</Text>
+      <FlatList
+        data={menuItemsToDisplay}
+        keyExtractor={(item) => item.id}
+        renderItem={renderItem}
+      />
+    </View>
+  )
+}
+
+// Styles
+const menuStyles = StyleSheet.create({
+  container: {
+    flex: 0.75
+  },
+  innerContainer: {
+    paddingHorizontal: 40,
+    paddingVertical: 20,
+    backgroundColor: 'black'
+  },
+  headerText: {
+    color: 'white',
+    fontSize: 40,
+    flexWrap: 'wrap',
+    textAlign: 'center'
+  },
+  itemText: {
+    color: '#F4CE14',
+    fontSize: 36
+  }
+})
+
+export default FlatLists
+```
+
+```bash
+ImageComponent.tsx
+```
+
+```javascript
+import React from 'react'
+import { ScrollView, Image, StyleSheet, Text } from 'react-native'
+
+const Welcome: React.FC = () => {
+  return (
+    <ScrollView style={styles.container}>
+      {/* Logo Image */}
+      <Image
+        style={styles.logo}
+        source={require('../assets/images/littleLemonLogo.png')}
+        resizeMode="contain"
+        accessible={true}
+        accessibilityLabel="Little Lemon Logo"
+      />
+
+      {/* Title Text */}
+      <Text style={styles.title}>
+        Little Lemon, your local Mediterranean Bistro
+      </Text>
+
+      {/* Gallery Images */}
+      <Image
+        style={styles.image}
+        source={require('../assets/images/Picture1.png')}
+        resizeMode="cover"
+        accessible={true}
+        accessibilityLabel="Little Lemon Dish 1"
+      />
+      <Image
+        style={styles.image}
+        source={require('../assets/images/Picture2.png')}
+        resizeMode="cover"
+        accessible={true}
+        accessibilityLabel="Little Lemon Dish 2"
+      />
+      <Image
+        style={styles.image}
+        source={require('../assets/images/Picture3.png')}
+        resizeMode="cover"
+        accessible={true}
+        accessibilityLabel="Little Lemon Dish 3"
+      />
+      <Image
+        style={styles.image}
+        source={require('../assets/images/Picture4.png')}
+        resizeMode="cover"
+        accessible={true}
+        accessibilityLabel="Little Lemon Dish 4"
+      />
+    </ScrollView>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 25,
+    marginTop: 25,
+    marginBottom: 25,
+    backgroundColor: '#fff',
+    borderRadius: 10
+  },
+  logo: {
+    height: 100,
+    width: 300,
+    alignSelf: 'center'
+  },
+  title: {
+    marginTop: 16,
+    paddingVertical: 10,
+    color: '#333',
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+  image: {
+    width: 350,
+    height: 250,
+    borderRadius: 10,
+    marginVertical: 10,
+    alignSelf: 'center'
+  }
+})
+
+export default Welcome
+```
+
+---
+
+```bash
+LittleLemonFooter.tsx
+```
+
+```javascript
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+
+const LittleLemonFooter = () => {
+  const currentYear = new Date().getFullYear()
+
+  return (
+    <View style={styles.footer}>
+      <Text style={styles.footerText}>© {currentYear} Little Lemon</Text>
+    </View>
+  )
+}
+
+export default LittleLemonFooter
+
+const styles = StyleSheet.create({
+  footer: {
+    height: 50,
+    backgroundColor: '#F4CE14',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  footerText: {
+    fontSize: 14,
+    color: '#495E57'
+  }
+})
+```
+
+---
+
+```bash
+LittleLemonHeader
+```
+
+```javascript
+import React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+
+const LittleLemonHeader: React.FC = () => {
+  return (
+    <View style={styles.header}>
+      <Text style={styles.headerText}>Little Lemon</Text>
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  header: {
+    flex: 0.2,
+    backgroundColor: '#F4CE14',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  headerText: {
+    fontSize: 18,
+    color: '#495E57',
+    fontWeight: 'bold'
+  }
+})
+
+export default LittleLemonHeader
+```
+
+---
+
+```bash
+LoginScreen.tsx
+```
+
+```javascript
+import React, { useState } from 'react'
+import {
+  ScrollView,
+  Text,
+  StyleSheet,
+  TextInput,
+  Pressable
+} from 'react-native'
+
+import { useRouter } from 'expo-router'
+
+export default function LoginScreen() {
+  const [email, onChangeEmail] = useState('')
+  const [password, onChangePassword] = useState('')
+  const router = useRouter() // Use this hook to navigate
+
+  return (
+    <ScrollView style={styles.container}>
+      <Text style={styles.headerText}>Welcome to Little Lemon</Text>
+      <Text style={styles.regularText}>Login to continue </Text>
+      <TextInput
+        style={styles.inputBox}
+        value={email}
+        onChangeText={onChangeEmail}
+        placeholder={'email'}
+        keyboardType={'email-address'}
+      />
+      <TextInput
+        style={styles.inputBox}
+        value={password}
+        onChangeText={onChangePassword}
+        placeholder={'password'}
+        keyboardType={'default'}
+        secureTextEntry={true}
+      />
+      <Pressable onPress={() => router.push('/welcome')} style={styles.button}>
+        <Text style={styles.buttonText}>Log in</Text>
+      </Pressable>
+    </ScrollView>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#333333',
+    width: '100%'
+  },
+  headerText: {
+    padding: 40,
+    fontSize: 30,
+    color: '#EDEFEE',
+    textAlign: 'center'
+  },
+  regularText: {
+    fontSize: 24,
+    padding: 20,
+    marginVertical: 8,
+    color: '#EDEFEE',
+    textAlign: 'center'
+  },
+  inputBox: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    fontSize: 16,
+    borderColor: '#EDEFEE',
+    backgroundColor: '#EDEFEE'
+  },
+  button: {
+    fontSize: 22,
+    padding: 10,
+    marginVertical: 8,
+    margin: 100,
+    backgroundColor: '#EE9972',
+    borderColor: '#EE9972',
+    borderWidth: 2,
+    borderRadius: 50
+  },
+  buttonText: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 25
+  }
+})
+```
+
+---
+
+```bash
+components/MenuItems.tsx
+```
+
+```javascript
+import React from 'react'
+import { View, Text, ScrollView, StyleSheet } from 'react-native'
+
+const menuItemsToDisplay = [
+  'Hummus',
+  'Moutabal',
+  'Falafel',
+  'Marinated Olives',
+  'Kofta',
+  'Eggplant Salad',
+  'Lentil Burger',
+  'Smoked Salmon',
+  'Kofta Burger',
+  'Turkish Kebab',
+  'Fries',
+  'Buttered Rice',
+  'Bread Sticks',
+  'Pita Pocket',
+  'Lentil Soup',
+  'Greek Salad',
+  'Rice Pilaf',
+  'Baklava',
+  'Tartufo',
+  'Tiramisu',
+  'Panna Cotta'
+]
+
+const MenuItems = () => {
+  return (
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        <Text style={styles.title}>View Menu</Text>
+        {menuItemsToDisplay.map((item, index) => (
+          <Text key={index} style={styles.menuItem}>
+            {item}
+          </Text>
+        ))}
+      </ScrollView>
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'black'
+  },
+  scrollContent: {
+    paddingHorizontal: 40,
+    paddingVertical: 40
+  },
+  title: {
+    color: 'white',
+    fontSize: 40,
+    marginBottom: 20
+  },
+  menuItem: {
+    color: '#F4CE14',
+    fontSize: 24,
+    marginBottom: 10
+  }
+})
+
+export default MenuItems
+```
+
+---
+
+```bash
+components/MenuItemsToDisplay.tsx
+```
+
+```javascript
+import React, { useState } from 'react'
+import {
+  View,
+  Text,
+  StyleSheet,
+  SectionList,
+  Pressable,
+  SectionListData,
+  SectionListRenderItemInfo
+} from 'react-native'
+
+type MenuSection = {
+  title: string
+  data: string[]
+}
+
+const menuItemsToDisplay: MenuSection[] = [
+  {
+    title: 'Appetizers',
+    data: [
+      'Hummus',
+      'Moutabal',
+      'Falafel',
+      'Marinated Olives',
+      'Kofta',
+      'Eggplant Salad'
+    ]
+  },
+  {
+    title: 'Main Dishes',
+    data: ['Lentil Burger', 'Smoked Salmon', 'Kofta Burger', 'Turkish Kebab']
+  },
+  {
+    title: 'Sides',
+    data: [
+      'Fries',
+      'Buttered Rice',
+      'Bread Sticks',
+      'Pita Pocket',
+      'Lentil Soup',
+      'Greek Salad',
+      'Rice Pilaf'
+    ]
+  },
+  {
+    title: 'Desserts',
+    data: ['Baklava', 'Tartufo', 'Tiramisu', 'Panna Cotta']
+  }
+]
+
+const Separator: React.FC = () => <View style={menuStyles.separator} />
+
+const Footer: React.FC = () => (
+  <Text style={menuStyles.footerText}>
+    All Rights Reserved by Little Lemon 2022
+  </Text>
+)
+
+const Item: React.FC<{ name: string }> = ({ name }) => (
+  <View style={menuStyles.innerContainer}>
+    <Text style={menuStyles.itemText}>{name}</Text>
+  </View>
+)
+
+const MenuItems: React.FC = () => {
+  const [showMenu, setShowMenu] = useState(false)
+
+  const renderItem = ({ item }: SectionListRenderItemInfo<string>) => (
+    <Item name={item} />
+  )
+
+  const renderSectionHeader = ({
+    section: { title }
+  }: {
+    section: SectionListData<string>
+  }) => <Text style={menuStyles.sectionHeader}>{title}</Text>
+
+  return (
+    <View style={menuStyles.container}>
+      {!showMenu && (
+        <Text style={menuStyles.infoSection}>
+          Little Lemon is a charming neighborhood bistro that serves simple food
+          and classic cocktails in a lively but casual environment. View our
+          menu to explore our cuisine with daily specials!
+        </Text>
+      )}
+      <Pressable
+        style={menuStyles.button}
+        onPress={() => setShowMenu((prevState) => !prevState)}
+      >
+        <Text style={menuStyles.buttonText}>
+          {showMenu ? 'Home' : 'View Menu'}
+        </Text>
+      </Pressable>
+      {showMenu && (
+        <SectionList
+          keyExtractor={(item, index) => item + index}
+          sections={menuItemsToDisplay}
+          renderItem={renderItem}
+          renderSectionHeader={renderSectionHeader}
+          ListFooterComponent={Footer}
+          ItemSeparatorComponent={Separator}
+        />
+      )}
+    </View>
+  )
+}
+
+const menuStyles = StyleSheet.create({
+  container: {
+    flex: 0.95
+  },
+  innerContainer: {
+    paddingHorizontal: 40,
+    paddingVertical: 20,
+    backgroundColor: '#333333'
+  },
+  sectionHeader: {
+    backgroundColor: '#fbdabb',
+    color: '#333333',
+    fontSize: 34,
+    flexWrap: 'wrap',
+    textAlign: 'center'
+  },
+  itemText: {
+    color: '#F4CE14',
+    fontSize: 32
+  },
+  separator: {
+    borderBottomWidth: 1,
+    borderColor: '#EDEFEE'
+  },
+  footerText: {
+    color: '#EDEFEE',
+    fontSize: 20,
+    flexWrap: 'wrap',
+    textAlign: 'center'
+  },
+  button: {
+    fontSize: 22,
+    padding: 10,
+    marginVertical: 8,
+    margin: 40,
+    backgroundColor: '#EDEFEE',
+    borderColor: '#EDEFEE',
+    borderWidth: 2,
+    borderRadius: 12
+  },
+  buttonText: {
+    color: '#333333',
+    textAlign: 'center',
+    fontSize: 32
+  },
+  infoSection: {
+    fontSize: 24,
+    padding: 20,
+    marginVertical: 8,
+    color: '#EDEFEE',
+    textAlign: 'center',
+    backgroundColor: '#495E57'
+  }
+})
+
+export default MenuItems
+```
+
+---
+
+```bash
+components/SectionList.tsx
+```
+
+```javascript
+import React from 'react'
+import {
+  View,
+  Text,
+  StyleSheet,
+  SectionList,
+  SectionListRenderItemInfo,
+  SectionListData
+} from 'react-native'
+
+// Correctly type sections
+interface Section {
+  title: string
+  data: string[]
+}
+
+const menuItemsToDisplay: Section[] = [
+  {
+    title: 'Appetizers',
+    data: [
+      'Hummus',
+      'Moutabal',
+      'Falafel',
+      'Marinated Olives',
+      'Kofta',
+      'Eggplant Salad'
+    ]
+  },
+  {
+    title: 'Main Dishes',
+    data: ['Lentil Burger', 'Smoked Salmon', 'Kofta Burger', 'Turkish Kebab']
+  },
+  {
+    title: 'Sides',
+    data: [
+      'Fries',
+      'Buttered Rice',
+      'Bread Sticks',
+      'Pita Pocket',
+      'Lentil Soup',
+      'Greek Salad',
+      'Rice Pilaf'
+    ]
+  },
+  {
+    title: 'Desserts',
+    data: ['Baklava', 'Tartufo', 'Tiramisu', 'Panna Cotta']
+  }
+]
+
+const Item: React.FC<{ name: string }> = ({ name }) => (
+  <View style={menuStyles.innerContainer}>
+    <Text style={menuStyles.itemText}>{name}</Text>
+  </View>
+)
+
+const Separator: React.FC = () => <View style={menuStyles.separator} />
+
+const SectionLists: React.FC = () => {
+  const renderItem = ({ item }: SectionListRenderItemInfo<string>) => (
+    <Item name={item} />
+  )
+
+  const renderSectionHeader = ({
+    section
+  }: {
+    section: SectionListData<string>
+  }) => <Text style={menuStyles.sectionHeader}>{section.title}</Text>
+
+  return (
+    <View style={menuStyles.container}>
+      <SectionList
+        sections={menuItemsToDisplay}
+        keyExtractor={(item, index) => item + index}
+        renderItem={renderItem}
+        renderSectionHeader={renderSectionHeader}
+        ItemSeparatorComponent={Separator}
+      />
+    </View>
+  )
+}
+
+// Add styles to the component
+const menuStyles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  innerContainer: {
+    paddingHorizontal: 40,
+    paddingVertical: 20,
+    backgroundColor: '#333333'
+  },
+  sectionHeader: {
+    backgroundColor: '#fbdabb',
+    color: '#333333',
+    fontSize: 34,
+    flexWrap: 'wrap',
+    textAlign: 'center'
+  },
+  itemText: {
+    color: '#F4CE14',
+    fontSize: 32
+  },
+  separator: {
+    borderBottomWidth: 1,
+    borderColor: '#EDEFEE'
+  },
+  footerText: {
+    color: '#EDEFEE',
+    fontSize: 20,
+    flexWrap: 'wrap',
+    textAlign: 'center'
+  }
+})
+
+export default SectionLists
+```
+
+---
+
+```bash
+components/TextInput.tsx
+```
+
+```javascript
+import React, { useState } from 'react'
+import { ScrollView, StyleSheet, Text, TextInput, Alert } from 'react-native'
+
+const FeedbackForm = () => {
+  // Declare the variables
+  const [firstName, onChangeFirstName] = useState('')
+  const [lastName, onChangeLastName] = useState('')
+  const [message, onChangeMessage] = useState('')
+  const [phoneNumber, onChangePhoneNumber] = useState('')
+
+  return (
+    <ScrollView style={styles.container}>
+      <Text style={styles.headingSection}>
+        How was your visit to Little Lemon?
+      </Text>
+      <Text style={styles.infoSection}>
+        Little Lemon is a charming neighborhood bistro that serves simple food
+        and classic cocktails in a lively but casual environment. We would love
+        to hear your experience with us!
+      </Text>
+      <TextInput
+        style={styles.input}
+        value={firstName}
+        onChangeText={onChangeFirstName}
+        placeholder="First Name"
+        onFocus={() => Alert.alert('First name is focused')}
+        onBlur={() => Alert.alert('First name is now blurred')}
+        clearButtonMode="always" // iOS-specific
+      />
+      <TextInput
+        style={styles.input}
+        value={lastName}
+        onChangeText={onChangeLastName}
+        placeholder="Last Name"
+      />
+      <TextInput
+        style={styles.input}
+        value={phoneNumber}
+        onChangeText={onChangePhoneNumber}
+        placeholder="Phone Number"
+        keyboardType="phone-pad"
+      />
+      <TextInput
+        style={styles.messageInput}
+        value={message}
+        onChangeText={onChangeMessage}
+        placeholder="Please leave feedback"
+        multiline
+        maxLength={250}
+      />
+    </ScrollView>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    fontSize: 16,
+    borderColor: '#EDEFEE',
+    backgroundColor: '#F4CE14'
+  },
+  messageInput: {
+    height: 100,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    fontSize: 16,
+    backgroundColor: '#F4CE14'
+  },
+  infoSection: {
+    fontSize: 24,
+    padding: 20,
+    marginVertical: 8,
+    color: '#EDEFEE',
+    textAlign: 'center',
+    backgroundColor: '#495E57'
+  },
+  headingSection: {
+    fontSize: 28,
+    padding: 20,
+    marginVertical: 8,
+    color: '#EDEFEE',
+    textAlign: 'center',
+    backgroundColor: '#495E57'
+  }
+})
+
+export default FeedbackForm
+```
+
+---
+
+```bash
+app/_layout.tsx
+```
+
+```javaScript
+import LittleLemonFooter from '@/components/LittleLemonFooter'
+import LittleLemonHeader from '@/components/LittleLemonHeader'
+import { Slot } from 'expo-router'
+import { View, StyleSheet, StatusBar, useColorScheme } from 'react-native'
+
+export default function Layout() {
+  const colorScheme = useColorScheme()
+
+  return (
+    <View
+      style={[
+        styles.container,
+        colorScheme === 'light'
+          ? { backgroundColor: '#fff' }
+          : { backgroundColor: '#333333' }
+      ]}
+    >
+      {/* StatusBar for proper alignment */}
+      <StatusBar barStyle="light-content" backgroundColor="#F4CE14" />
+
+      {/* Header */}
+      <LittleLemonHeader />
+
+      <View style={styles.content}>
+        <Slot />
+      </View>
+
+      {/* Footer */}
+      <LittleLemonFooter />
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  content: {
+    flex: 1
+  }
+})
+```
+
+---
+
+```bash
+app/index.tsx
+```
+
+```javascript
+import React from 'react'
+import { View, StyleSheet } from 'react-native'
+import LoginScreen from '@/components/LoginScreen'
+
+const Home: React.FC = () => {
+  return (
+    <View style={styles.container}>
+      <LoginScreen />
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#495E57',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})
+
+export default Home
+```
