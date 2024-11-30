@@ -1,7 +1,16 @@
 import React from 'react'
-import { ScrollView, View, Text, StyleSheet, Image } from 'react-native'
+import {
+  ScrollView,
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  useWindowDimensions
+} from 'react-native'
 
 const WelcomeScreen: React.FC = () => {
+  const window = useWindowDimensions()
+
   return (
     <ScrollView style={styles.container}>
       {/* Header Section */}
@@ -15,13 +24,16 @@ const WelcomeScreen: React.FC = () => {
         />
         <Text style={styles.headerText}>Little Lemon</Text>
       </View>
-
       {/* Description Section */}
       <Text style={styles.regularText}>
         Little Lemon is a charming neighborhood bistro that serves simple food
         and classic cocktails in a lively but casual environment. We would love
         to hear your experience with us!
       </Text>
+      <Text style={styles.regularText}>Window Dimensions</Text>
+      <Text style={styles.regularText}>Height: {window.height}</Text>
+      <Text style={styles.regularText}>Width: {window.width}</Text>
+      <Text style={styles.regularText}>Font scale: {window.fontScale}</Text>
     </ScrollView>
   )
 }

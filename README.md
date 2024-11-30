@@ -2062,3 +2062,223 @@ Once implemented, the background image will be rendered correctly in the app, wi
 - Try using **`opacity`** or other overlay styles to enhance the readability of text placed over background images.
 
 ---
+
+# 🎨 **Adapting Themes with `useColorScheme` in React Native**
+
+## 📝 **INTRODUCTION**
+
+This material focuses on using the built-in **React Native hook** called **`useColorScheme`**, which empowers apps to dynamically adjust their styling based on the user's device color theme (light or dark). This capability ensures a seamless and personalized user experience.
+
+---
+
+## 🌈 **Understanding `useColorScheme`**
+
+The **`useColorScheme`** hook subscribes to the system's **color scheme updates**, allowing your app to respond automatically when a user switches between **light mode** and **dark mode**.
+
+### Key Features:
+
+- **Dynamic Updates**: The hook listens for changes in the device's theme settings.
+- **Returned Values**:
+  - **`"light"`**: When the device is in light mode.
+  - **`"dark"`**: When the device is in dark mode.
+  - **`"null"`**: When no preference is set (rarely encountered).
+
+---
+
+## 🛠️ **Implementing `useColorScheme` in an App**
+
+Using **`useColorScheme`** is straightforward and involves these simple steps:
+
+### Code Example:
+
+```javascript
+import React from 'react'
+import { View, Text, StyleSheet, useColorScheme } from 'react-native'
+
+const App = () => {
+  // Retrieve the current color scheme
+  const colorScheme = useColorScheme()
+
+  // Determine styles based on the color scheme
+  const dynamicStyles = {
+    backgroundColor: colorScheme === 'dark' ? '#333' : '#FFF',
+    color: colorScheme === 'dark' ? '#FFF' : '#000'
+  }
+
+  return (
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: dynamicStyles.backgroundColor }
+      ]}
+    >
+      <Text style={[styles.text, { color: dynamicStyles.color }]}>
+        Welcome to {colorScheme === 'dark' ? 'Dark Mode' : 'Light Mode'}!
+      </Text>
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  text: {
+    fontSize: 18,
+    fontWeight: 'bold'
+  }
+})
+
+export default App
+```
+
+### Explanation:
+
+- **`useColorScheme`** retrieves the current color scheme (e.g., `"light"` or `"dark"`).
+- A **dynamic style object** adjusts the background and text colors based on the color scheme.
+- By combining static and dynamic styles, you ensure a consistent and responsive design.
+
+---
+
+## 🖥️ **Testing the Implementation**
+
+You can easily test the implementation by toggling the **appearance settings** in your emulator or device:
+
+1. **iOS**:
+   - Go to **Settings > Display & Brightness** and toggle between **Light** and **Dark** modes.
+2. **Android**:
+   - Open **Settings > Display** and toggle between **Light** and **Dark** themes.
+
+### Expected Behavior:
+
+- **Light Mode**: Displays a white background with dark text.
+- **Dark Mode**: Displays a dark gray background with white text.
+- The theme transitions dynamically and seamlessly without requiring a manual app reload.
+
+---
+
+## 🚀 **Why Use `useColorScheme`?**
+
+- **Enhanced UX**: Automatically aligns with the user's system preferences.
+- **Accessibility**: Ensures that your app is visually comfortable in all conditions.
+- **Simplicity**: Minimal setup while providing powerful dynamic styling.
+
+---
+
+## 🔑 **Key Takeaways**
+
+- The **`useColorScheme`** hook is an essential tool for building responsive, theme-aware React Native applications.
+- Dynamically adapting your app's theme improves both user satisfaction and visual appeal.
+- Regular practice and experimentation with different styling approaches will help you master this feature.
+
+---
+
+### 💡 **Practice Tip:**
+
+- Extend the implementation to create custom themes (e.g., vibrant or muted palettes).
+- Explore integrating **`useColorScheme`** with global state management libraries for a cohesive theming solution across your app.
+
+---
+
+# 📱 **Responsive Design with `useWindowDimensions` in React Native**
+
+## 📝 **INTRODUCTION**
+
+This material focuses on the use of the **`useWindowDimensions`** hook in **React Native**, a powerful tool for building responsive layouts by dynamically accessing the device's window dimensions and font scale.
+
+---
+
+## 📐 **Understanding `useWindowDimensions`**
+
+The **`useWindowDimensions`** hook simplifies responsive design by providing **real-time dimensions** of the app's visible window.
+
+### Key Features:
+
+- **Dynamic Values**: Returns the window's **`height`**, **`width`**, and **`fontScale`**.
+- **Automatic Updates**: Values are updated automatically when the screen size changes, such as during a device rotation.
+- **Easy to Use**: Can be used within any functional React component.
+
+---
+
+## 💻 **Displaying Window Dimensions**
+
+### Code Example:
+
+```javascript
+import React from 'react'
+import { View, Text, StyleSheet, useWindowDimensions } from 'react-native'
+
+const App = () => {
+  // Retrieve window dimensions
+  const { height, width, fontScale } = useWindowDimensions()
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>📏 Height: {height.toFixed(2)}px</Text>
+      <Text style={styles.text}>📐 Width: {width.toFixed(2)}px</Text>
+      <Text style={styles.text}>🔡 Font Scale: {fontScale.toFixed(2)}</Text>
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  text: {
+    fontSize: 18,
+    marginVertical: 5
+  }
+})
+
+export default App
+```
+
+---
+
+### 🛠️ **Explanation**:
+
+1. **Import the Hook**: Import **`useWindowDimensions`** from **React Native**.
+2. **Destructure Values**: Retrieve **`height`**, **`width`**, and **`fontScale`** dynamically.
+3. **Display Values**: Use the values to display or apply them in styles, ensuring the UI adapts to screen changes.
+
+---
+
+## 🎯 **Practical Application**
+
+The **`useWindowDimensions`** hook is invaluable for crafting layouts that adjust seamlessly across devices, from small phones to large tablets.
+
+### Use Cases:
+
+- **Responsive Text Scaling**: Dynamically adjust text size based on `fontScale` for readability.
+- **Adaptive Layouts**: Rearrange or resize UI components based on window width and height.
+- **Device Rotation Handling**: React to changes when users rotate their device, maintaining a consistent and user-friendly design.
+
+---
+
+## 🌟 **Benefits of Using `useWindowDimensions`**
+
+- **Enhanced User Experience**: Ensures content looks great on any screen size.
+- **Real-Time Responsiveness**: Automatically adapts to orientation or screen size changes.
+- **Effortless Integration**: Easy to use without additional dependencies or setup.
+
+---
+
+## 🚀 **Key Takeaways**
+
+- The **`useWindowDimensions`** hook is a must-have tool for responsive design in React Native.
+- Real-time updates make it simple to adapt layouts to diverse screen sizes and resolutions.
+- Experimentation is key—try creating dynamic styles based on window dimensions to see the full potential of this hook.
+
+---
+
+### 💡 **Practice Tip:**
+
+- Combine **`useWindowDimensions`** with **`StyleSheet`** and conditional rendering for a fully responsive and aesthetically pleasing app.
+- Test your app on multiple devices and orientations to fine-tune your layouts.
+
+---

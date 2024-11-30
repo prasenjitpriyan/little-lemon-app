@@ -1,11 +1,11 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import BackgroundImageApp from '@/components/BackgroundImageApp'
+import WelcomeScreen from '@/components/WelcomeScreen'
 
 const Home: React.FC = () => {
   return (
     <View style={styles.container}>
-      <BackgroundImageApp />
+      <WelcomeScreen />
     </View>
   )
 }

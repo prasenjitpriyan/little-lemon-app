@@ -1,11 +1,20 @@
 import LittleLemonFooter from '@/components/LittleLemonFooter'
 import LittleLemonHeader from '@/components/LittleLemonHeader'
 import { Stack } from 'expo-router'
-import { View, Text, StyleSheet, StatusBar } from 'react-native'
+import { View, Text, StyleSheet, StatusBar, useColorScheme } from 'react-native'
 
 export default function Layout() {
+  const colorScheme = useColorScheme()
+
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        colorScheme === 'light'
+          ? { backgroundColor: '#fff' }
+          : { backgroundColor: '#333333' }
+      ]}
+    >
       {/* StatusBar for proper alignment */}
       <StatusBar barStyle="light-content" backgroundColor="#F4CE14" />
 
@@ -28,8 +37,7 @@ export default function Layout() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#F4F4F4'
+    flex: 1
   },
   content: {
     flex: 1
