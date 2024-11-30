@@ -2,9 +2,11 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 const LittleLemonFooter = () => {
+  const currentYear = new Date().getFullYear()
+
   return (
     <View style={styles.footer}>
-      <Text style={styles.footerText}>© 2024 Little Lemon</Text>
+      <Text style={styles.footerText}>© {currentYear} Little Lemon</Text>
     </View>
   )
 }
