@@ -1,5 +1,3 @@
-import LittleLemonFooter from '@/components/LittleLemonFooter'
-import LittleLemonHeader from '@/components/LittleLemonHeader'
 import { Slot } from 'expo-router'
 import { View, StyleSheet, StatusBar, useColorScheme } from 'react-native'
 
@@ -19,14 +17,12 @@ export default function Layout() {
       <StatusBar barStyle="light-content" backgroundColor="#F4CE14" />
 
       {/* Header */}
-      <LittleLemonHeader />
 
       <View style={styles.content}>
         <Slot />
       </View>
 
       {/* Footer */}
-      <LittleLemonFooter />
     </View>
   )
 }
